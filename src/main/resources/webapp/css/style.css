@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url(/images/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: "Segoe UI", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: white;
+    box-shadow: 0.5em 0.5em 1.2em rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav li {
+    height: 3.2em;
+}
+
+nav a {
+    height: 100%;
+    font-weight: 500;
+    padding: 0 2em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+nav a:hover {
+    background-color: #f0f0f0;
+}
+
+h1 {
+    margin-bottom: 0.4em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container {
+    min-width: 60vh;
+    min-height: 25vh;
+    background-color: white;
+    padding: 2em;
+    box-shadow: 0.5em 0.5em 1.2em rgba(0, 0, 0, 0.1);
+    border-radius: 0.75em;
+}
+
+.content-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
+
+.input-box {
+    margin-top: 1em;
+}
+
+.input-box i {
+    font-size: 1.3em;
+}
+
+input {
+    width: 15em;
+    font-size: 1.2em;
+    box-sizing: border-box;
+    padding: 0.5em;
+    border-radius: 0.4em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead {
+    background-color: #f0f0f0;
+}
+
+thead tr::after {
+    content: "";
+    display: table-cell;
+    background-color: #f0f0f0;
+}
+
+.table-content tr {
+    border: 0.15em solid #f0f0f0;
+}
+
+.table-content th, .table-content td {
+    text-align: center;
+    padding: 0.8em;
+}
+
+.table-content th {
+    font-size: 1.15em;
+    text-transform: uppercase;
+}
+
+.table-content td {
+    font-weight: 400;
+    font-size: 1.05em;
+    text-transform: capitalize;
+}
+
+.btn-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.25em;
+}
+
+
+.create-btn, .finished-matches-btn, .start-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.836);
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 0.4em;
+    border: none;
+    background-color: #0065a7;
+}
+
+.start-btn {
+    height: 3em;
+    padding: 1em;
+    font-size: 1.3em;
+}
+
+.create-btn, .finished-matches-btn {
+    text-decoration: none;
+    padding: 0 1em;
+    height: 3em;
+    font-size: 1.2em;
+    margin: 0.75em 1em;
+}
+
+.create-btn:hover, .finished-matches-btn:hover, .start-btn:hover {
+    background-color: #007ac9;
+    cursor: pointer;
+}
+
+.matches-form-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.matches-form-box .btn {
+    color: black;
+    margin: 0.3em;
+    background: none;
+    font-size: 2em;
+    border: none;
+    cursor: pointer;
+}
+
+.matches-form-box .btn:hover {
+    color: #646666;
+}
+
+.matches-form-box button {
+    padding-left: 0.2em;
+}
+
+.matches-form-box a i {
+    padding-bottom: 0.3em;
+}
+
+.match-score-box .btn {
+    background-color: #0065a7;
+    padding: 0.4em 1em;
+    color: rgba(255, 255, 255, 0.836);
+    font-size: 1em;
+    font-weight: 550;
+    border: none;
+    border-radius: 0.6em;
+    cursor: pointer;
+}
+
+.match-score-box .btn:hover {
+    background-color: #007ac9;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.3em;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.pagination a, p {
+    padding: 0 1em;
+    color: black;
+}
+
+.pagination a:hover {
+    color: #646666;
+}
+
+.container .welcome-message {
+    font-weight: 600;
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.container .btn-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
