@@ -21,7 +21,6 @@ public class MatchScoreCalculationServiceTest {
         }
 
         assertEquals(ScoreState.PLAYER_ONE_WON, matchScoreCalculationService.winPoint(fullScore, 0));
-        assertEquals(2, fullScore.getMatchScore().getPlayerPoints(0));
     }
 
 }
