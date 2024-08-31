@@ -3,14 +3,11 @@ package com.damvih.services.score;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class Score<T> {
+abstract public class Score<T> implements ScoreLevel {
 
     private final List<T> playerPoints = new ArrayList<>();
     protected static final int PLAYER_ONE = 0;
     protected static final int PLAYER_TWO = 1;
-
-    abstract public ScoreState winPoint(int playerNumber);
-    abstract public void reset();
 
     public Score() {
         playerPoints.add(null);

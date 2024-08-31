@@ -10,6 +10,7 @@ abstract public class RegularScore extends Score<Integer> {
         setPlayerPoints(PLAYER_TWO, 0);
     }
 
+    @Override
     public ScoreState winPoint(int playerNumber) {
         setPlayerPoints(playerNumber, getPlayerPoints(playerNumber) + 1);
         return checkState(playerNumber);
