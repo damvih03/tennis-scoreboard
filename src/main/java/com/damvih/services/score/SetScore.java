@@ -31,7 +31,7 @@ public class SetScore extends Score<Integer> {
         return checkState(playerNumber);
     }
 
-    public boolean isTiebreak() {
+    public boolean isTie() {
         int playerOnePoints = getPlayerPoints(PLAYER_ONE);
         int playerTwoPoints = getPlayerPoints(PLAYER_TWO);
         return playerOnePoints == GAMES_TO_WIN_BEFORE_TIEBREAK && playerTwoPoints == GAMES_TO_WIN_BEFORE_TIEBREAK;
