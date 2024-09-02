@@ -7,13 +7,20 @@ public class MatchScoreCalculationService {
     public ScoreState winPoint(FullScore fullScore, int playerNumber) {
         MatchScore matchScore = fullScore.getMatchScore();
         SetScore setScore = fullScore.getSetScore();
-        RegularGameScore gameScore = fullScore.getGameScore();
+        GameScore gameScore = fullScore.getGameScore();
 
-        if (gameScore.winPoint(playerNumber) != ScoreState.CONTINUE) {
+        ScoreState state = gameScore.winPoint(playerNumber);
+        if (state != ScoreState.CONTINUE) {
             gameScore.reset();
-            if (setScore.winPoint(playerNumber) != ScoreState.CONTINUE) {
+
+            state = setScore.winPoint(playerNumber);
+            if (state != ScoreState.CONTINUE) {
                 setScore.reset();
                 return matchScore.winPoint(playerNumber);
+            }
+
+            if (setScore.isTiebreak() && gameScore instanceof RegularGameScore) {
+                fullScore.setGameScore(new TieBreakGameScore());
             }
         }
         return ScoreState.CONTINUE;
