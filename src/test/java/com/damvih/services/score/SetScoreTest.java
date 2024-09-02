@@ -29,7 +29,7 @@ public class SetScoreTest {
     }
 
     @Test
-    public void testPointsWonInTiebreak() {
+    public void testPointWonInTiebreak() {
         SetScore setScore = new SetScore();
 
         for (int i = 0; i < SetScore.GAMES_TO_WIN_BEFORE_TIEBREAK; i++) {
@@ -37,7 +37,6 @@ public class SetScoreTest {
             setScore.winPoint(1);
         }
 
-        setScore.winPoint(1);
         assertEquals(ScoreState.PLAYER_TWO_WON, setScore.winPoint(1));
     }
 
