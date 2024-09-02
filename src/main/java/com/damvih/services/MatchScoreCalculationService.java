@@ -4,24 +4,27 @@ import com.damvih.services.score.*;
 
 public class MatchScoreCalculationService {
 
+    // TODO: Refactor
     public ScoreState winPoint(FullScore fullScore, int playerNumber) {
-        MatchScore matchScore = fullScore.getMatchScore();
+        GameScore<?> gameScore = fullScore.getGameScore();
         SetScore setScore = fullScore.getSetScore();
-        GameScore gameScore = fullScore.getGameScore();
+        MatchScore matchScore = fullScore.getMatchScore();
 
-        ScoreState state = gameScore.winPoint(playerNumber);
-        if (state != ScoreState.CONTINUE) {
+
+        if (gameScore.winPoint(playerNumber) != ScoreState.CONTINUE) {
             gameScore.reset();
 
-            state = setScore.winPoint(playerNumber);
-            if (state != ScoreState.CONTINUE) {
-                setScore.reset();
-                return matchScore.winPoint(playerNumber);
+            if (setScore.winPoint(playerNumber) == ScoreState.CONTINUE) {
+                if (setScore.isTiebreak() && gameScore instanceof RegularGameScore) {
+                    fullScore.setGameScore(new TieBreakGameScore());
+                }
+                return ScoreState.CONTINUE;
             }
 
-            if (setScore.isTiebreak() && gameScore instanceof RegularGameScore) {
-                fullScore.setGameScore(new TieBreakGameScore());
-            }
+            setScore.reset();
+            fullScore.setGameScore(new RegularGameScore());
+            return matchScore.winPoint(playerNumber);
+
         }
         return ScoreState.CONTINUE;
     }

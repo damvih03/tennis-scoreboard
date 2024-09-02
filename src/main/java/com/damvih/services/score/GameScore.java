@@ -1,5 +1,5 @@
 package com.damvih.services.score;
 
-public interface GameScore extends ScoreActions {
+abstract public class GameScore<T> extends Score<T> {
 
 }

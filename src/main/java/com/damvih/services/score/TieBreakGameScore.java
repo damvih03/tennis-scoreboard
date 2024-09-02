@@ -1,6 +1,6 @@
 package com.damvih.services.score;
 
-public class TieBreakGameScore extends Score<Integer> implements GameScore {
+public class TieBreakGameScore extends GameScore<Integer> {
 
     public static final int MIN_POINTS_TO_WIN = 7;
     public static final int MIN_DIFFERENCE_TO_WIN = 2;

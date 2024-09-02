@@ -12,7 +12,8 @@ public class SetScore extends Score<Integer> {
         int enemyPlayerPoints = getPlayerPoints(enemyPlayerNumber);
         int difference = playerPoints - enemyPlayerPoints;
 
-        if (playerPoints >= GAMES_TO_WIN_BEFORE_TIEBREAK && difference >= MIN_DIFFERENCE_TO_WIN) {
+        // TODO: Refactor condition
+        if (playerPoints == GAMES_TO_WIN_BEFORE_TIEBREAK && difference >= MIN_DIFFERENCE_TO_WIN || playerPoints > GAMES_TO_WIN_BEFORE_TIEBREAK) {
             return determineWinner(playerNumber);
         }
         return ScoreState.CONTINUE;
