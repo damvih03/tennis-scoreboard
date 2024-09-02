@@ -1,6 +1,6 @@
 package com.damvih.services.score;
 
-public class MatchScore extends RegularScore {
+public class MatchScore extends IntegerScore {
 
     public static final int SETS_TO_WIN = 2;
 

@@ -1,6 +1,6 @@
 package com.damvih.services.score;
 
-abstract public class RegularScore extends Score<Integer> {
+abstract public class IntegerScore extends Score<Integer> {
 
     abstract protected ScoreState checkState(int playerName);
 
