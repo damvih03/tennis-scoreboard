@@ -8,7 +8,7 @@ public class GameScoreTest {
 
     @Test
     public void testPointsWonWithoutAdvantage() {
-        GameScore gameScore = new GameScore();
+        RegularGameScore gameScore = new RegularGameScore();
         for (int i = 0; i < 3; i++) {
             assertEquals(gameScore.winPoint(0), ScoreState.CONTINUE);
         }
@@ -17,7 +17,7 @@ public class GameScoreTest {
 
     @Test
     public void testAdvantage() {
-        GameScore gameScore = new GameScore();
+        RegularGameScore gameScore = new RegularGameScore();
 
         for (int i = 0; i < 3; i++) {
             gameScore.winPoint(0);

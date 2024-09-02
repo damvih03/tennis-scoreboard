@@ -2,14 +2,12 @@ package com.damvih.services;
 
 import com.damvih.services.score.*;
 
-import java.util.List;
-
 public class MatchScoreCalculationService {
 
     public ScoreState winPoint(FullScore fullScore, int playerNumber) {
         MatchScore matchScore = fullScore.getMatchScore();
         SetScore setScore = fullScore.getSetScore();
-        GameScore gameScore = fullScore.getGameScore();
+        RegularGameScore gameScore = fullScore.getGameScore();
 
         if (gameScore.winPoint(playerNumber) != ScoreState.CONTINUE) {
             gameScore.reset();

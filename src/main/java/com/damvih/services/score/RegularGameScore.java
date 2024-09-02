@@ -1,6 +1,6 @@
 package com.damvih.services.score;
 
-public class GameScore extends Score<GameScoreState> {
+public class RegularGameScore extends Score<GameScoreState> {
 
     @Override
     public void reset() {

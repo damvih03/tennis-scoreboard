@@ -12,7 +12,7 @@ public class MatchScoreCalculationServiceTest {
         FullScore fullScore = new FullScore(
                 new MatchScore(),
                 new SetScore(),
-                new GameScore()
+                new RegularGameScore()
         );
         MatchScoreCalculationService matchScoreCalculationService = new MatchScoreCalculationService();
 

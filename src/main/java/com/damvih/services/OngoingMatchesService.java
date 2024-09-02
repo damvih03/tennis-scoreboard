@@ -2,7 +2,7 @@ package com.damvih.services;
 
 import com.damvih.dto.NewMatchRequestDto;
 import com.damvih.services.score.FullScore;
-import com.damvih.services.score.GameScore;
+import com.damvih.services.score.RegularGameScore;
 import com.damvih.services.score.MatchScore;
 import com.damvih.services.score.SetScore;
 
@@ -24,7 +24,7 @@ public class OngoingMatchesService {
                 .fullScore(new FullScore(
                         new MatchScore(),
                         new SetScore(),
-                        new GameScore()
+                        new RegularGameScore()
                 ))
                 .build();
         currentMatches.put(uuid, currentMatch);

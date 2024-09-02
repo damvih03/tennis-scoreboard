@@ -13,6 +13,6 @@ public class FullScore {
 
     private MatchScore matchScore;
     private SetScore setScore;
-    private GameScore gameScore;
+    private RegularGameScore gameScore;
 
 }
