@@ -3,7 +3,7 @@ package com.damvih.services.score;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class Score<T> implements ScoreLevel {
+abstract public class Score<T> {
 
     private final List<T> playerPoints = new ArrayList<>();
     protected static final int PLAYER_ONE = 0;
@@ -26,6 +26,10 @@ abstract public class Score<T> implements ScoreLevel {
     public void setPlayerPoints(int playerNumber, T point) {
         playerPoints.set(playerNumber, point);
     }
+
+    abstract public ScoreState winPoint(int playerNumber);
+
+    abstract public void reset();
 
     protected static ScoreState determineWinner(int playerNumber) {
         return playerNumber == PLAYER_ONE ? ScoreState.PLAYER_ONE_WON : ScoreState.PLAYER_TWO_WON;

@@ -1,29 +1,24 @@
 package com.damvih.services;
 
-import com.damvih.services.score.FullScore;
-import com.damvih.services.score.ScoreLevel;
-import com.damvih.services.score.ScoreState;
+import com.damvih.services.score.*;
 
 import java.util.List;
 
 public class MatchScoreCalculationService {
 
     public ScoreState winPoint(FullScore fullScore, int playerNumber) {
-        List<ScoreLevel> scoreLevels = List.of(
-                fullScore.getGameScore(),
-                fullScore.getSetScore(),
-                fullScore.getMatchScore()
-        );
+        MatchScore matchScore = fullScore.getMatchScore();
+        SetScore setScore = fullScore.getSetScore();
+        GameScore gameScore = fullScore.getGameScore();
 
-        ScoreState state = ScoreState.CONTINUE;
-        for (ScoreLevel level : scoreLevels) {
-            state = level.winPoint(playerNumber);
-            if (state == ScoreState.CONTINUE) {
-                return state;
+        if (gameScore.winPoint(playerNumber) != ScoreState.CONTINUE) {
+            gameScore.reset();
+            if (setScore.winPoint(playerNumber) != ScoreState.CONTINUE) {
+                setScore.reset();
+                return matchScore.winPoint(playerNumber);
             }
-            level.reset();
         }
-        return state;
+        return ScoreState.CONTINUE;
     }
 
     public boolean isMatchOverAfterWinningPoint(FullScore fullScore, int playerNumber) {
