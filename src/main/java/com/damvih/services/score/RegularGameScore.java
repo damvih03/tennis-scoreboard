@@ -1,6 +1,6 @@
 package com.damvih.services.score;
 
-public class RegularGameScore extends GameScore<GameScoreState> {
+public class RegularGameScore extends GameScore<RegularGameScoreState> {
 
     @Override
     public String getView(int playerNumber) {
@@ -9,8 +9,8 @@ public class RegularGameScore extends GameScore<GameScoreState> {
 
     @Override
     public void reset() {
-        setPlayerPoints(PLAYER_ONE, GameScoreState.ZERO);
-        setPlayerPoints(PLAYER_TWO, GameScoreState.ZERO);
+        setPlayerPoints(PLAYER_ONE, RegularGameScoreState.ZERO);
+        setPlayerPoints(PLAYER_TWO, RegularGameScoreState.ZERO);
     }
 
     @Override
@@ -22,16 +22,16 @@ public class RegularGameScore extends GameScore<GameScoreState> {
 
         if (isGameOver(playerPoints, enemyPlayerPoints)) {
             return determineWinner(playerNumber);
-        } else if (playerPoints < GameScoreState.FORTY.ordinal() || enemyPlayerPoints == GameScoreState.FORTY.ordinal()) {
-            setPlayerPoints(playerNumber, GameScoreState.nextValue(playerPoints));
-        } else if (enemyPlayerPoints == GameScoreState.ADVANTAGE.ordinal()) {
-            setPlayerPoints(enemyPlayerNumber, GameScoreState.FORTY);
+        } else if (playerPoints < RegularGameScoreState.FORTY.ordinal() || enemyPlayerPoints == RegularGameScoreState.FORTY.ordinal()) {
+            setPlayerPoints(playerNumber, RegularGameScoreState.nextValue(playerPoints));
+        } else if (enemyPlayerPoints == RegularGameScoreState.ADVANTAGE.ordinal()) {
+            setPlayerPoints(enemyPlayerNumber, RegularGameScoreState.FORTY);
         }
         return ScoreState.CONTINUE;
     }
 
     private boolean isGameOver(int playerPoints, int enemyPlayerPoints) {
-        return playerPoints == GameScoreState.FORTY.ordinal() && enemyPlayerPoints < GameScoreState.FORTY.ordinal() || playerPoints == GameScoreState.ADVANTAGE.ordinal();
+        return playerPoints == RegularGameScoreState.FORTY.ordinal() && enemyPlayerPoints < RegularGameScoreState.FORTY.ordinal() || playerPoints == RegularGameScoreState.ADVANTAGE.ordinal();
     }
 
 }

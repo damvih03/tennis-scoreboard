@@ -26,12 +26,12 @@ public class GameScoreTest {
 
         // AD:40
         assertEquals(gameScore.winPoint(0), ScoreState.CONTINUE);
-        assertEquals(gameScore.getPlayerPoints(0), GameScoreState.ADVANTAGE);
+        assertEquals(gameScore.getPlayerPoints(0), RegularGameScoreState.ADVANTAGE);
 
         // 40:40
         assertEquals(gameScore.winPoint(1), ScoreState.CONTINUE);
-        assertEquals(gameScore.getPlayerPoints(0), GameScoreState.FORTY);
-        assertEquals(gameScore.getPlayerPoints(1), GameScoreState.FORTY);
+        assertEquals(gameScore.getPlayerPoints(0), RegularGameScoreState.FORTY);
+        assertEquals(gameScore.getPlayerPoints(1), RegularGameScoreState.FORTY);
 
         gameScore.winPoint(0);
         assertEquals(gameScore.winPoint(0), ScoreState.PLAYER_ONE_WON);
