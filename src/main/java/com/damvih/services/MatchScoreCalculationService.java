@@ -1,26 +1,32 @@
 package com.damvih.services;
 
+import com.damvih.services.action_strategies.GameScoreActionStrategy;
+import com.damvih.services.action_strategies.MatchScoreActionStrategy;
+import com.damvih.services.action_strategies.ScoreLevelActionStrategy;
+import com.damvih.services.action_strategies.SetScoreActionStrategy;
 import com.damvih.services.score.*;
+
+import java.util.List;
 
 public class MatchScoreCalculationService {
 
     public ScoreState winPoint(FullScore fullScore, int playerNumber) {
-        GameScore<?> gameScore = fullScore.getGameScore();
-        SetScore setScore = fullScore.getSetScore();
-        MatchScore matchScore = fullScore.getMatchScore();
+        List<ScoreLevelActionStrategy> strategies = List.of(
+                new GameScoreActionStrategy(),
+                new SetScoreActionStrategy(),
+                new MatchScoreActionStrategy()
+        );
 
-        if (gameScore.winPoint(playerNumber) == ScoreState.CONTINUE) {
-            return ScoreState.CONTINUE;
+        ScoreState state = null;
+        for (ScoreLevelActionStrategy strategy: strategies) {
+            state = strategy.winPoint(fullScore, playerNumber);
+            if (state == ScoreState.CONTINUE) {
+                strategy.perform(fullScore);
+                return ScoreState.CONTINUE;
+            }
+            strategy.reset(fullScore);
         }
-        fullScore.setGameScore(new RegularGameScore());
-
-        if (setScore.winPoint(playerNumber) == ScoreState.CONTINUE) {
-            startTiebreak(fullScore);
-            return ScoreState.CONTINUE;
-        }
-
-        fullScore.setSetScore(new SetScore());
-        return matchScore.winPoint(playerNumber);
+        return state;
     }
 
     public boolean isMatchOverAfterWinningPoint(FullScore fullScore, int playerNumber) {
@@ -32,10 +38,5 @@ public class MatchScoreCalculationService {
         currentMatch.setWinner(winner);
     }
 
-    private void startTiebreak(FullScore fullScore) {
-        if (fullScore.getSetScore().isTie() && fullScore.getGameScore() instanceof RegularGameScore) {
-            fullScore.setGameScore(new TieBreakGameScore());
-        }
-    }
 
 }
