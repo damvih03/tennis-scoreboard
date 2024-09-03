@@ -15,15 +15,11 @@ public class MatchScoreCalculationService {
         fullScore.setGameScore(new RegularGameScore());
 
         if (setScore.winPoint(playerNumber) == ScoreState.CONTINUE) {
-
-            // Start tiebreak
-            if (setScore.isTiebreak() && gameScore instanceof RegularGameScore) {
-                fullScore.setGameScore(new TieBreakGameScore());
-            }
+            startTiebreak(fullScore);
             return ScoreState.CONTINUE;
         }
 
-        setScore.reset();
+        fullScore.setSetScore(new SetScore());
         return matchScore.winPoint(playerNumber);
     }
 
@@ -34,6 +30,12 @@ public class MatchScoreCalculationService {
     public void setWinner(CurrentMatch currentMatch, int playerNumber) {
         String winner = playerNumber == 0 ? currentMatch.getPlayerOne() : currentMatch.getPlayerTwo();
         currentMatch.setWinner(winner);
+    }
+
+    private void startTiebreak(FullScore fullScore) {
+        if (fullScore.getSetScore().isTie() && fullScore.getGameScore() instanceof RegularGameScore) {
+            fullScore.setGameScore(new TieBreakGameScore());
+        }
     }
 
 }
