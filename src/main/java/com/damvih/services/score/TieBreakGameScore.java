@@ -19,6 +19,11 @@ public class TieBreakGameScore extends GameScore<Integer> {
     }
 
     @Override
+    public String getView(int playerNumber) {
+        return super.getPlayerPoints(playerNumber).toString();
+    }
+
+    @Override
     public void reset() {
         setPlayerPoints(PLAYER_ONE, 0);
         setPlayerPoints(PLAYER_TWO, 0);

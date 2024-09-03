@@ -3,6 +3,11 @@ package com.damvih.services.score;
 public class RegularGameScore extends GameScore<GameScoreState> {
 
     @Override
+    public String getView(int playerNumber) {
+        return super.getPlayerPoints(playerNumber).getValue();
+    }
+
+    @Override
     public void reset() {
         setPlayerPoints(PLAYER_ONE, GameScoreState.ZERO);
         setPlayerPoints(PLAYER_TWO, GameScoreState.ZERO);

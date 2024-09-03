@@ -32,7 +32,7 @@
                             <td>${currentMatch.playerOne}</td>
                             <td>${currentMatch.fullScore.matchScore.getPlayerPoints(0)}</td>
                             <td>${currentMatch.fullScore.setScore.getPlayerPoints(0)}</td>
-                            <td>${currentMatch.fullScore.gameScore.getPlayerPoints(0)}</td>
+                            <td>${currentMatch.fullScore.gameScore.getView(0)}</td>
                             <td>
                                 <form class="match-score-box" action="match-score?uuid=${uuid}" method="post">
                                     <button class="btn" name="playerNumber" value="0">Point</button>
@@ -43,7 +43,7 @@
                             <td>${currentMatch.playerTwo}</td>
                             <td>${currentMatch.fullScore.matchScore.getPlayerPoints(1)}</td>
                             <td>${currentMatch.fullScore.setScore.getPlayerPoints(1)}</td>
-                            <td>${currentMatch.fullScore.gameScore.getPlayerPoints(1)}</td>
+                            <td>${currentMatch.fullScore.gameScore.getView(1)}</td>
                             <td>
                                 <form class="match-score-box" action="match-score?uuid=${uuid}" method="post">
                                     <button class="btn" name="playerNumber" value="1">Point</button>

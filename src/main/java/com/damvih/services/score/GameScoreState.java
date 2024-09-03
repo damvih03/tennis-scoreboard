@@ -7,10 +7,10 @@ public enum GameScoreState {
 
     ZERO("0"), FIFTEEN("15"), THIRTY("30"), FORTY("40"), ADVANTAGE("AD");
 
-    private final String view;
+    private final String value;
 
-    GameScoreState(String view) {
-        this.view = view;
+    GameScoreState(String value) {
+        this.value = value;
     }
 
     public static GameScoreState nextValue(int index) {
